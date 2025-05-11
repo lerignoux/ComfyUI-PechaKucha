@@ -1,0 +1,455 @@
+{
+  "last_node_id": 29,
+  "last_link_id": 31,
+  "nodes": [
+    {
+      "id": 19,
+      "type": "CLIPTextEncode",
+      "pos": [
+        143.13748168945312,
+        333.75732421875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 14
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "a pretty girl"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "CLIPTextEncode",
+      "pos": [
+        136.04656982421875,
+        592.12109375
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            16
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 18,
+      "type": "KSampler",
+      "pos": [
+        696.86474609375,
+        891.57568359375
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 13
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 17
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 16
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        655165261555852,
+        "randomize",
+        10,
+        8,
+        "euler",
+        "normal",
+        1
+      ]
+    },
+    {
+      "id": 22,
+      "type": "VAEDecode",
+      "pos": [
+        1087.822021484375,
+        903.0579833984375
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 19
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            28
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 25,
+      "type": "SplitPrompt",
+      "pos": [
+        -576.6425170898438,
+        340.18206787109375
+      ],
+      "size": [
+        412,
+        196
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Split Prompts",
+          "type": "STRING",
+          "shape": 6,
+          "links": [
+            24,
+            31
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SplitPrompt"
+      },
+      "widgets_values": [
+        "A rabbit walking with a suitcase\nAn old guy trying to carry a bag of money\nA space view from earth",
+        "\n",
+        true
+      ]
+    },
+    {
+      "id": 21,
+      "type": "EmptyLatentImage",
+      "pos": [
+        288.1556396484375,
+        1123.75732421875
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1280,
+        720,
+        1
+      ]
+    },
+    {
+      "id": 17,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -622.9769897460938,
+        888.4140625
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            14,
+            15
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "epicrealismXL_v5Ultimate.safetensors"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "GeneratePowerpoint",
+      "pos": [
+        1417.4892578125,
+        914.5468139648438
+      ],
+      "size": [
+        378,
+        130
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 28
+        },
+        {
+          "name": "titles",
+          "type": "STRING",
+          "widget": {
+            "name": "titles"
+          },
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "filename",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GeneratePowerpoint"
+      },
+      "widgets_values": [
+        "My pecha",
+        "",
+        20,
+        true
+      ]
+    }
+  ],
+  "links": [
+    [
+      13,
+      17,
+      0,
+      18,
+      0,
+      "MODEL"
+    ],
+    [
+      14,
+      17,
+      1,
+      19,
+      0,
+      "CLIP"
+    ],
+    [
+      15,
+      17,
+      1,
+      20,
+      0,
+      "CLIP"
+    ],
+    [
+      16,
+      20,
+      0,
+      18,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      17,
+      19,
+      0,
+      18,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      18,
+      21,
+      0,
+      18,
+      3,
+      "LATENT"
+    ],
+    [
+      19,
+      18,
+      0,
+      22,
+      0,
+      "LATENT"
+    ],
+    [
+      20,
+      17,
+      2,
+      22,
+      1,
+      "VAE"
+    ],
+    [
+      24,
+      25,
+      0,
+      19,
+      1,
+      "STRING"
+    ],
+    [
+      28,
+      22,
+      0,
+      27,
+      0,
+      "IMAGE"
+    ],
+    [
+      31,
+      25,
+      0,
+      27,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9090909090909091,
+      "offset": [
+        812.004781836218,
+        -127.85274297232016
+      ]
+    }
+  },
+  "version": 0.4
+}
