@@ -1,0 +1,14 @@
+[project]
+name = "ComfyUI-PechaKucha"
+description = "Nodes to generate a pecha kucha presentation in ComfyUI"
+version = "1.0.0"
+license = { file = "LICENSE" }
+dependencies = ["python-pptx >= 1.0.2"]
+
+[project.urls]
+Repository = "https://github.com/lerignoux/ComfyUI-PechaKucha.git"
+
+[tool.comfy]
+PublisherId = "lerignoux"
+DisplayName = "ComfyUI Pecha Kucha"
+Icon = "https://www.pechakucha.com/static/media/PK_logo_wide_darkmode.b18e1f231e00fe884e4169f95cd0dc26.svg"
