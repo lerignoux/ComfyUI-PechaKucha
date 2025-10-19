@@ -1,6 +1,8 @@
 {
-  "last_node_id": 29,
-  "last_link_id": 31,
+  "id": "594262c2-cffc-4068-8fa7-d4ea47a1869d",
+  "revision": 0,
+  "last_node_id": 30,
+  "last_link_id": 32,
   "nodes": [
     {
       "id": 19,
@@ -72,10 +74,10 @@
         {
           "name": "CONDITIONING",
           "type": "CONDITIONING",
+          "slot_index": 0,
           "links": [
             16
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
@@ -125,10 +127,10 @@
         {
           "name": "LATENT",
           "type": "LATENT",
+          "slot_index": 0,
           "links": [
             19
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
@@ -174,10 +176,10 @@
         {
           "name": "IMAGE",
           "type": "IMAGE",
+          "slot_index": 0,
           "links": [
             28
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
@@ -202,14 +204,13 @@
       "inputs": [],
       "outputs": [
         {
-          "name": "Split Prompts",
+          "name": "split prompt",
           "type": "STRING",
-          "shape": 6,
+          "slot_index": 0,
           "links": [
             24,
             31
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
@@ -273,19 +274,19 @@
         {
           "name": "MODEL",
           "type": "MODEL",
+          "slot_index": 0,
           "links": [
             13
-          ],
-          "slot_index": 0
+          ]
         },
         {
           "name": "CLIP",
           "type": "CLIP",
+          "slot_index": 1,
           "links": [
             14,
             15
-          ],
-          "slot_index": 1
+          ]
         },
         {
           "name": "VAE",
@@ -300,6 +301,39 @@
       },
       "widgets_values": [
         "epicrealismXL_v5Ultimate.safetensors"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "DownloadPechaKucha",
+      "pos": [
+        1904.9952392578125,
+        915.4524536132812
+      ],
+      "size": [
+        397.9166564941406,
+        82
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "filename",
+          "type": "STRING",
+          "widget": {
+            "name": "filename"
+          },
+          "link": 32
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "DownloadPechaKucha"
+      },
+      "widgets_values": [
+        "",
+        ""
       ]
     },
     {
@@ -335,8 +369,10 @@
         {
           "name": "filename",
           "type": "STRING",
-          "links": null,
-          "slot_index": 0
+          "slot_index": 0,
+          "links": [
+            32
+          ]
         }
       ],
       "properties": {
@@ -438,6 +474,14 @@
       27,
       1,
       "STRING"
+    ],
+    [
+      32,
+      27,
+      0,
+      30,
+      0,
+      "STRING"
     ]
   ],
   "groups": [],
@@ -446,10 +490,11 @@
     "ds": {
       "scale": 0.9090909090909091,
       "offset": [
-        812.004781836218,
-        -127.85274297232016
+        -220.895218163782,
+        -490.8527429723203
       ]
-    }
+    },
+    "frontendVersion": "1.27.10"
   },
   "version": 0.4
 }
