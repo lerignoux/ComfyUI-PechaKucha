@@ -1,16 +1,25 @@
+from comfy_api.latest import ComfyExtension, io
+
+from .download_pecha_kucha import DownloadPechaKucha
 from .pecha_kucha import GeneratePowerpoint
 from .split_prompt import SplitPrompt
-# A dictionary that contains all nodes you want to export with their names
-# NOTE: names should be globally unique
-NODE_CLASS_MAPPINGS = {
-    "GeneratePowerpoint": GeneratePowerpoint,
-    "SplitPrompt": SplitPrompt
-}
 
-# A dictionary that contains the friendly/humanly readable titles for the nodes
-NODE_DISPLAY_NAME_MAPPINGS = {
-    "GeneratePowerpoint": "Generate PechaKucha Powerpoint",
-    "SplitPrompt": "Split Prompt (To Batch)"
-}
+WEB_DIRECTORY = "./web"
 
-__all__ = [NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS]
+
+class PechaKucha(ComfyExtension):
+    # must be declared as async
+    async def get_node_list(self) -> list[type[io.ComfyNode]]:
+        return [
+            DownloadPechaKucha,
+            GeneratePowerpoint,
+            SplitPrompt,
+        ]
+
+
+# can be declared async or not, both will work
+async def comfy_entrypoint() -> PechaKucha:
+    return PechaKucha()
+
+
+__all__ = ["WEB_DIRECTORY"]
