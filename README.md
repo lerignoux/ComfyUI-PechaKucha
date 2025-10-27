@@ -1,3 +1,5 @@
+![Static Badge](https://img.shields.io/badge/status-validated-green) ![Static Badge](https://img.shields.io/badge/validation-f2466984-blue)
+
 # ComfyUI-PechaKucha
 Comfy UI nodes to generate pecha kucha presentations
 
