@@ -51,7 +51,7 @@ app.registerExtension({
       const folderName = cleanFilePath.replace(/[^\\/]+$/, "");
       const fileNameMatch = cleanFilePath.match(/[^\\/]+$/);
       const fileName = fileNameMatch ? fileNameMatch[0] : "";
-      const viewUrl = `/api/view?subfolder=${encodeURIComponent(folderName)}&filename=${encodeURIComponent(fileName)}&type=output`;
+      const viewUrl = `api/view?subfolder=${encodeURIComponent(folderName)}&filename=${encodeURIComponent(fileName)}&type=output`;
 
       // Open the presentation in a new tab
       window.open(viewUrl, "_blank");
